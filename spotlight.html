@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>In the Spotlight · Aziz | Confidence Hairsalon</title>
-<meta name="description" content="In the Spotlight bij Confidence Hairsalon: Aziz, 25 jaar, barber. Haircut: High Skin Drop Fade."/>
+<title>In the Spotlight | Confidence Hairsalon</title>
+<meta name="description" content="In the Spotlight bij Confidence Hairsalon: echte klanten, echte coupes, geknipt door Stephan."/>
 <style>
 :root{
   --bg:#17120f;
@@ -48,6 +48,14 @@ h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(52px,6vw,88px);fo
   .wrap{width:min(100% - 28px,1380px)}.navlinks .active{display:none}.navlinks .btn{padding:11px 15px;font-size:12px}.brand{font-size:18px;letter-spacing:.12em}.brand small{letter-spacing:.3em}
   main{padding-top:20px}.spotlight{gap:28px}.photo-frame img{aspect-ratio:1/1.08}.kicker{font-size:11px}.kicker:before{width:28px}h1{font-size:50px;margin-bottom:20px}.rule{margin-bottom:25px}.name{font-size:52px}.person-meta{font-size:12px;gap:14px;margin-bottom:26px}.haircut{font-size:36px}.description{font-size:16px;line-height:1.6}.bottom-row{padding-bottom:8px}
 }
+
+.slider-wrap{position:relative}
+.nav-arrow{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;border:1px solid rgba(210,176,136,.75);background:rgba(16,13,11,.78);color:#d2b088;font-size:30px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;transition:.2s}
+.nav-arrow:hover{background:#2b211b;color:white}.nav-arrow.prev{left:-28px}.nav-arrow.next{right:-28px}
+.dots{display:flex;justify-content:center;gap:10px;margin-top:28px}.dot{width:9px;height:9px;border-radius:50%;border:0;background:rgba(255,255,255,.28);cursor:pointer;padding:0}.dot.active{background:#d2b088}
+.slide{display:none}.slide.active{display:grid}.slide{grid-template-columns:minmax(0,1.05fr) minmax(380px,.95fr);gap:72px;align-items:center;min-height:calc(100vh - 260px)}
+@media(max-width:980px){.slide{grid-template-columns:1fr;gap:40px;min-height:auto}.nav-arrow.prev{left:8px}.nav-arrow.next{right:8px}.nav-arrow{top:38%;width:46px;height:46px;background:rgba(16,13,11,.7)}}
+@media(max-width:620px){.slide{gap:28px}.nav-arrow{width:40px;height:40px;font-size:24px;top:31%}}
 </style>
 </head>
 <body>
@@ -65,27 +73,102 @@ h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(52px,6vw,88px);fo
     </nav>
   </div>
 </header>
-<main>
-  <div class="wrap spotlight">
-    <div class="photo-frame">
-      <img src="spotlight-aziz.png" alt="Aziz met High Skin Drop Fade, geknipt door Confidence Hairsalon"/>
-    </div>
-    <section class="copy" aria-labelledby="spotlight-title">
-      <div class="kicker">In the</div>
-      <h1 id="spotlight-title">Spotlight</h1>
-      <div class="rule"></div>
-      <div class="name">Aziz</div>
-      <div class="person-meta"><span>25 jaar</span><i aria-hidden="true"></i><span>Barber</span></div>
-      <div class="label">Haircut</div>
-      <div class="haircut">High Skin Drop Fade</div>
-      <div class="rule"></div>
-      <p class="description">Een strakke high skin drop fade waarbij de overgang achter het oor mooi naar beneden wegloopt. De donkere lengte bovenop zorgt voor contrast en laat de fade extra sterk uitkomen.</p>
-      <div class="bottom-row">
-        <a class="back" href="index.html#werk">← Terug naar mijn werk</a>
-        <span class="counter">01 / 01</span>
-      </div>
+<main><div class="wrap slider-wrap">
+<button class="nav-arrow prev" aria-label="Vorige Spotlight">‹</button>
+<button class="nav-arrow next" aria-label="Volgende Spotlight">›</button>
+<section class="slide active" data-index="0">
+      <div class="photo-frame"><img src="spotlight-aziz.png" alt="Aziz bij Confidence Hairsalon"/></div>
+      <section class="copy" aria-labelledby="spotlight-title-0">
+        <div class="kicker">In the</div><h1 id="spotlight-title-0">Spotlight</h1><div class="rule"></div>
+        <div class="name">Aziz</div>
+        <div class="person-meta"><span>25 jaar</span><i aria-hidden="true"></i><span>Barber</span></div>
+        <div class="label">Haircut</div><div class="haircut">High Skin Drop Fade</div><div class="rule"></div>
+        <p class="description">Een strakke high skin drop fade waarbij de overgang achter het oor mooi naar beneden wegloopt. De donkere lengte bovenop zorgt voor contrast en laat de fade extra sterk uitkomen.</p>
+        <div class="bottom-row"><a class="back" href="index.html#werk">← Terug naar mijn werk</a><span class="counter">01 / 07</span></div>
+      </section>
     </section>
-  </div>
-</main>
+<section class="slide" data-index="1">
+      <div class="photo-frame"><img src="spotlight-jay.png" alt="Jay bij Confidence Hairsalon"/></div>
+      <section class="copy" aria-labelledby="spotlight-title-1">
+        <div class="kicker">In the</div><h1 id="spotlight-title-1">Spotlight</h1><div class="rule"></div>
+        <div class="name">Jay</div>
+        <div class="person-meta"><span>28 jaar</span><i aria-hidden="true"></i><span>Timmerman</span></div>
+        <div class="label">Haircut</div><div class="haircut">Low Taper Fade (Soft Blend) · Wavy Backwards on Top</div><div class="rule"></div>
+        <p class="description">Een zachte low taper fade met een natuurlijke overgang, gecombineerd met een wavy backwards styling bovenop. Verzorgd en strak, zonder dat de coupe zijn natuurlijke beweging verliest.</p>
+        <div class="bottom-row"><a class="back" href="index.html#werk">← Terug naar mijn werk</a><span class="counter">02 / 07</span></div>
+      </section>
+    </section>
+<section class="slide" data-index="2">
+      <div class="photo-frame"><img src="spotlight-leander.png" alt="Leander bij Confidence Hairsalon"/></div>
+      <section class="copy" aria-labelledby="spotlight-title-2">
+        <div class="kicker">In the</div><h1 id="spotlight-title-2">Spotlight</h1><div class="rule"></div>
+        <div class="name">Leander</div>
+        <div class="person-meta"><span>38 jaar</span><i aria-hidden="true"></i><span>Ondernemer</span></div>
+        <div class="label">Haircut</div><div class="haircut">Mid Fade · Blended into Longer Top</div><div class="rule"></div>
+        <p class="description">Een strakke mid fade die vloeiend overloopt in de langere lengte bovenop. De zachte blend behoudt volume en beweging, met een verzorgde en natuurlijke afwerking.</p>
+        <div class="bottom-row"><a class="back" href="index.html#werk">← Terug naar mijn werk</a><span class="counter">03 / 07</span></div>
+      </section>
+    </section>
+<section class="slide" data-index="3">
+      <div class="photo-frame"><img src="spotlight-nuri.png" alt="Nuri bij Confidence Hairsalon"/></div>
+      <section class="copy" aria-labelledby="spotlight-title-3">
+        <div class="kicker">In the</div><h1 id="spotlight-title-3">Spotlight</h1><div class="rule"></div>
+        <div class="name">Nuri</div>
+        <div class="person-meta"><span>33 jaar</span><i aria-hidden="true"></i><span>Financieel adviseur</span></div>
+        <div class="label">Haircut</div><div class="haircut">Mid Fade Undercut · Long Length Blended into the Back · Beard Blend</div><div class="rule"></div>
+        <p class="description">Een strakke mid fade undercut met behoud van lengte bovenop, vloeiend doorgeblend naar de achterkant. De overloop naar zijn baard sluit naadloos aan op de fade, waardoor kapsel en baard één strak en verzorgd geheel vormen.</p>
+        <div class="bottom-row"><a class="back" href="index.html#werk">← Terug naar mijn werk</a><span class="counter">04 / 07</span></div>
+      </section>
+    </section>
+<section class="slide" data-index="4">
+      <div class="photo-frame"><img src="spotlight-stephan-h.png" alt="Stephan H. bij Confidence Hairsalon"/></div>
+      <section class="copy" aria-labelledby="spotlight-title-4">
+        <div class="kicker">In the</div><h1 id="spotlight-title-4">Spotlight</h1><div class="rule"></div>
+        <div class="name">Stephan H.</div>
+        <div class="person-meta"><span>29 jaar</span><i aria-hidden="true"></i><span>ZZP glasbewasser</span></div>
+        <div class="label">Haircut</div><div class="haircut">Low Fade · Blended into Longer Top</div><div class="rule"></div>
+        <p class="description">Een strakke low fade met een zachte overgang naar de langere lengte bovenop. De natuurlijke blend behoudt volume en geeft de coupe een verzorgde, moderne uitstraling.</p>
+        <div class="bottom-row"><a class="back" href="index.html#werk">← Terug naar mijn werk</a><span class="counter">05 / 07</span></div>
+      </section>
+    </section>
+<section class="slide" data-index="5">
+      <div class="photo-frame"><img src="spotlight-thijs-db.png" alt="Thijs d.B. bij Confidence Hairsalon"/></div>
+      <section class="copy" aria-labelledby="spotlight-title-5">
+        <div class="kicker">In the</div><h1 id="spotlight-title-5">Spotlight</h1><div class="rule"></div>
+        <div class="name">Thijs d.B.</div>
+        <div class="person-meta"><span>29 jaar</span><i aria-hidden="true"></i><span>Allround timmerman</span></div>
+        <div class="label">Haircut</div><div class="haircut">Taper Fade · Blended into Loose Wavy Backwards Top</div><div class="rule"></div>
+        <p class="description">Een strakke taper fade met een zachte overgang naar de langere lengte bovenop. De losse, wavy backwards styling behoudt natuurlijke beweging en volume en geeft de coupe een verzorgde maar ontspannen uitstraling.</p>
+        <div class="bottom-row"><a class="back" href="index.html#werk">← Terug naar mijn werk</a><span class="counter">06 / 07</span></div>
+      </section>
+    </section>
+<section class="slide" data-index="6">
+      <div class="photo-frame"><img src="spotlight-jim.png" alt="Jim bij Confidence Hairsalon"/></div>
+      <section class="copy" aria-labelledby="spotlight-title-6">
+        <div class="kicker">In the</div><h1 id="spotlight-title-6">Spotlight</h1><div class="rule"></div>
+        <div class="name">Jim</div>
+        <div class="person-meta"><span>29 jaar</span><i aria-hidden="true"></i><span>ICT'er</span></div>
+        <div class="label">Haircut</div><div class="haircut">Skin Mid Fade · Blended into Low Curly Top</div><div class="rule"></div>
+        <p class="description">Een strakke skin mid fade die vloeiend overgaat in de lagere, natuurlijke krullen bovenop. De natuurlijke textuur geeft volume en een moderne, frisse uitstraling.</p>
+        <div class="bottom-row"><a class="back" href="index.html#werk">← Terug naar mijn werk</a><span class="counter">07 / 07</span></div>
+      </section>
+    </section>
+<div class="dots" aria-label="Spotlight navigatie"><button class="dot active" data-index="0" aria-label="Ga naar Spotlight 1"></button><button class="dot" data-index="1" aria-label="Ga naar Spotlight 2"></button><button class="dot" data-index="2" aria-label="Ga naar Spotlight 3"></button><button class="dot" data-index="3" aria-label="Ga naar Spotlight 4"></button><button class="dot" data-index="4" aria-label="Ga naar Spotlight 5"></button><button class="dot" data-index="5" aria-label="Ga naar Spotlight 6"></button><button class="dot" data-index="6" aria-label="Ga naar Spotlight 7"></button></div>
+</div></main>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const dots=[...document.querySelectorAll('.dot')];
+let current=0;
+function showSlide(index){
+  current=(index+slides.length)%slides.length;
+  slides.forEach((s,i)=>s.classList.toggle('active',i===current));
+  dots.forEach((d,i)=>d.classList.toggle('active',i===current));
+}
+document.querySelector('.prev').addEventListener('click',()=>showSlide(current-1));
+document.querySelector('.next').addEventListener('click',()=>showSlide(current+1));
+dots.forEach(d=>d.addEventListener('click',()=>showSlide(Number(d.dataset.index))));
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')showSlide(current-1);if(e.key==='ArrowRight')showSlide(current+1)});
+</script>
 </body>
 </html>
