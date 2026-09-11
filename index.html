@@ -142,6 +142,28 @@
     @media(max-width:560px){.contact-grid{grid-template-columns:1fr}.contact-card:last-child{grid-column:auto}}
 
     .meta{display:flex;align-items:center;gap:7px}.meta::before{content:"\1F552";font-size:14px;line-height:1}
+
+    /* Minimal barber chooser */
+    body.modal-open{overflow:hidden}
+    .barber-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:22px;background:rgba(10,8,7,.58);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s ease}
+    .barber-modal.open{opacity:1;visibility:visible}
+    .barber-dialog{position:relative;width:min(360px,100%);background:#181310;color:#fff;border:1px solid rgba(255,255,255,.10);border-radius:22px;padding:26px 24px 24px;box-shadow:0 24px 70px rgba(0,0,0,.35);transform:scale(.98) translateY(6px);transition:transform .22s ease}
+    .barber-modal.open .barber-dialog{transform:scale(1) translateY(0)}
+    .barber-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.06);color:#fff;font-size:22px;line-height:1;cursor:pointer}
+    .barber-title{margin:4px 34px 22px;text-align:center;font-size:22px;font-weight:700;letter-spacing:-.02em}
+    .barber-options{display:flex;justify-content:center}
+    .barber-choice{display:flex;flex-direction:column;align-items:center;gap:10px;width:132px;padding:8px 8px 10px;border-radius:16px;transition:background .18s ease,transform .18s ease}
+    .barber-choice:hover{background:rgba(182,154,128,.10);transform:translateY(-1px)}
+    .barber-choice img{width:96px;height:112px;object-fit:cover;object-position:center 24%;border-radius:14px;border:1px solid rgba(255,255,255,.10)}
+    .barber-choice span{font-size:16px;font-weight:700;letter-spacing:.01em}
+    @media(max-width:560px){
+      .barber-modal{padding:18px}
+      .barber-dialog{width:min(330px,100%);padding:24px 20px 22px;border-radius:20px}
+      .barber-title{font-size:21px;margin-bottom:20px}
+      .barber-choice{width:124px}
+      .barber-choice img{width:92px;height:108px}
+    }
+
 </style>
 </head>
 <body>
@@ -169,5 +191,45 @@
 <section class="booking"><div class="wrap booking-inner"><div class="eyebrow">Boeken via Vev</div><h2>Klaar voor je volgende haircut?</h2><p>Kies je behandeling, selecteer een moment en rond je boeking direct online af.</p><a class="btn light" href="https://vev.co/confidence-hairsalon-hoogezand" rel="noopener" target="_blank">Boek afspraak</a></div></section>
 </main>
 <footer><div class="wrap footer"><div><strong>Confidence Hairsalon</strong></div><div><a href="#contact">Contact</a> · <a href="voorwaarden.html">Voorwaarden</a> · <a href="privacy.html">Privacy</a></div></div></footer>
+
+<div class="barber-modal" id="barberModal" aria-hidden="true">
+  <div class="barber-dialog" role="dialog" aria-modal="true" aria-labelledby="barberModalTitle">
+    <button class="barber-close" type="button" aria-label="Sluiten">×</button>
+    <div class="barber-title" id="barberModalTitle">Kies je kapper</div>
+    <div class="barber-options">
+      <a class="barber-choice" href="https://vev.co/confidence-hairsalon-hoogezand" rel="noopener" target="_blank">
+        <img src="barber-stephan.png" alt="Stephan"/>
+        <span>Stephan</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  const modal = document.getElementById('barberModal');
+  const closeBtn = modal.querySelector('.barber-close');
+  const bookingLinks = [...document.querySelectorAll('a[href*="vev.co/confidence-hairsalon-hoogezand"]')]
+    .filter(link => !/review/i.test(link.textContent));
+  function openModal(e){
+    e.preventDefault();
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+    setTimeout(()=>closeBtn.focus(),0);
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+  }
+  bookingLinks.forEach(link => link.addEventListener('click', openModal));
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+})();
+</script>
+
 </body>
 </html>
