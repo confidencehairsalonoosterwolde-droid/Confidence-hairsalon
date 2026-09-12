@@ -56,6 +56,67 @@ h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(52px,6vw,88px);fo
 .slide{display:none}.slide.active{display:grid}.slide{grid-template-columns:minmax(0,1.05fr) minmax(380px,.95fr);gap:72px;align-items:center;min-height:calc(100vh - 260px)}
 @media(max-width:980px){.slide{grid-template-columns:1fr;gap:40px;min-height:auto}.nav-arrow.prev{left:8px}.nav-arrow.next{right:8px}.nav-arrow{top:38%;width:46px;height:46px;background:rgba(16,13,11,.7)}}
 @media(max-width:620px){.slide{gap:28px}.nav-arrow{width:40px;height:40px;font-size:24px;top:31%}}
+
+/* Confidence barber chooser */
+body.modal-open{overflow:hidden}
+.barber-modal{
+  position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+  padding:22px;background:rgba(10,8,7,0);backdrop-filter:blur(0);
+  opacity:0;visibility:hidden;
+  transition:background .48s ease,backdrop-filter .58s ease,opacity .42s ease,visibility .85s;
+}
+.barber-modal.open{
+  background:rgba(10,8,7,.64);backdrop-filter:blur(7px);
+  opacity:1;visibility:visible;
+}
+.barber-dialog{
+  position:relative;width:min(350px,100%);
+  background:rgba(24,19,16,.94);color:#fff;
+  border:1px solid rgba(255,255,255,.08);border-radius:22px;
+  padding:28px 24px 18px;box-shadow:0 26px 80px rgba(0,0,0,.30);
+  opacity:0;transform:translateY(16px);
+  transition:opacity .48s ease .28s,transform .62s cubic-bezier(.22,.61,.36,1) .28s;
+}
+.barber-modal.open .barber-dialog{opacity:1;transform:translateY(0)}
+.barber-close{
+  position:absolute;top:13px;right:13px;width:34px;height:34px;border:0;border-radius:50%;
+  background:transparent;color:rgba(255,255,255,.58);
+  font-size:20px;line-height:1;cursor:pointer;opacity:0;
+  transition:opacity .34s ease .44s,color .18s ease;
+}
+.barber-modal.open .barber-close{opacity:1}
+.barber-close:hover{color:rgba(255,255,255,.90)}
+.barber-title{
+  margin:3px 34px 25px;text-align:center;font-size:21px;font-weight:650;letter-spacing:-.02em;
+  opacity:0;transform:translateY(5px);
+  transition:opacity .42s ease .48s,transform .48s ease .48s;
+}
+.barber-modal.open .barber-title{opacity:1;transform:none}
+.barber-options{display:flex;justify-content:center;align-items:flex-start;gap:16px}
+.barber-choice{
+  display:flex;flex-direction:column;align-items:center;gap:11px;width:126px;
+  padding:7px 7px 10px;border-radius:16px;
+  opacity:0;transform:translateY(8px);
+  transition:opacity .46s ease .62s,transform .52s ease .62s,background .18s ease;
+}
+.barber-modal.open .barber-choice{opacity:1;transform:none}
+.barber-choice:hover{background:rgba(182,154,128,.09)}
+.barber-choice img{
+  width:92px;height:108px;object-fit:cover;object-position:center 24%;
+  border-radius:13px;border:1px solid rgba(255,255,255,.09);
+}
+.barber-choice span{font-size:15px;font-weight:650;letter-spacing:.01em}
+@media(max-width:560px){
+  .barber-modal{padding:18px}
+  .barber-dialog{width:min(320px,100%);padding:27px 20px 17px;border-radius:20px}
+  .barber-title{font-size:20px;margin-bottom:23px}
+  .barber-choice{width:120px}
+  .barber-choice img{width:88px;height:104px}
+}
+@media(prefers-reduced-motion:reduce){
+  .barber-modal,.barber-dialog,.barber-close,.barber-title,.barber-choice{transition:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -69,7 +130,7 @@ h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(52px,6vw,88px);fo
       <a href="index.html#over">Over</a>
       <a class="active" href="spotlight.html">In the Spotlight</a>
       <a href="nieuws.html">Nieuws</a>
-      <a class="btn" href="https://vev.co/confidence-hairsalon-hoogezand" rel="noopener" target="_blank">Boek afspraak</a>
+      <a class="btn book-trigger" href="#">Boek afspraak</a>
     </nav>
   </div>
 </header>
@@ -156,6 +217,24 @@ h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(52px,6vw,88px);fo
 <div class="dots" aria-label="Spotlight navigatie"><button class="dot active" data-index="0" aria-label="Ga naar Spotlight 1"></button><button class="dot" data-index="1" aria-label="Ga naar Spotlight 2"></button><button class="dot" data-index="2" aria-label="Ga naar Spotlight 3"></button><button class="dot" data-index="3" aria-label="Ga naar Spotlight 4"></button><button class="dot" data-index="4" aria-label="Ga naar Spotlight 5"></button><button class="dot" data-index="5" aria-label="Ga naar Spotlight 6"></button><button class="dot" data-index="6" aria-label="Ga naar Spotlight 7"></button></div>
 </div></main>
 
+
+<div class="barber-modal" id="barberModal" aria-hidden="true">
+  <div class="barber-dialog" role="dialog" aria-modal="true" aria-labelledby="barberModalTitle">
+    <button class="barber-close" type="button" aria-label="Sluiten">×</button>
+    <div class="barber-title" id="barberModalTitle">Kies je kapper</div>
+    <div class="barber-options">
+      <a class="barber-choice" href="https://confidence-hairsalon-1.salonized.com/widget_bookings/new?widget_id=iwCxYJF3q7QsfdWzjE6RbrAT" rel="noopener" target="_blank">
+        <img src="barber-stephan.png" alt="Stephan"/>
+        <span>Stephan</span>
+      </a>
+      <a class="barber-choice" href="https://confidence-hairsalon-1.salonized.com/widget_bookings/new?widget_id=9PVvCx6L1mzGW9HSTDmv9Hfy" rel="noopener" target="_blank">
+        <img src="barber-melvin.png" alt="Melvin"/>
+        <span>Melvin</span>
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
 const slides=[...document.querySelectorAll('.slide')];
 const dots=[...document.querySelectorAll('.dot')];
@@ -169,6 +248,27 @@ document.querySelector('.prev').addEventListener('click',()=>showSlide(current-1
 document.querySelector('.next').addEventListener('click',()=>showSlide(current+1));
 dots.forEach(d=>d.addEventListener('click',()=>showSlide(Number(d.dataset.index))));
 document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')showSlide(current-1);if(e.key==='ArrowRight')showSlide(current+1)});
+
+const barberModal=document.getElementById('barberModal');
+const barberClose=barberModal.querySelector('.barber-close');
+const bookingLinks=[...document.querySelectorAll('.book-trigger')];
+function openBarberModal(e){
+  e.preventDefault();
+  barberModal.classList.add('open');
+  barberModal.setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+  setTimeout(()=>barberClose.focus(),0);
+}
+function closeBarberModal(){
+  barberModal.classList.remove('open');
+  barberModal.setAttribute('aria-hidden','true');
+  document.body.classList.remove('modal-open');
+}
+bookingLinks.forEach(link=>link.addEventListener('click',openBarberModal));
+barberClose.addEventListener('click',closeBarberModal);
+barberModal.addEventListener('click',e=>{if(e.target===barberModal)closeBarberModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&barberModal.classList.contains('open'))closeBarberModal()});
+
 </script>
 </body>
 </html>
