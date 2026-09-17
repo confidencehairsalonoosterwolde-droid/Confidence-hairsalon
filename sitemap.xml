@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://confidencehairsalon.nl/</loc>
-  </url>
-  <url>
-    <loc>https://confidencehairsalon.nl/spotlight.html</loc>
-  </url>
-  <url>
-    <loc>https://confidencehairsalon.nl/nieuws.html</loc>
-  </url>
-  <url>
-    <loc>https://confidencehairsalon.nl/voorwaarden.html</loc>
-  </url>
-  <url>
-    <loc>https://confidencehairsalon.nl/privacy.html</loc>
-  </url>
+  <url><loc>https://www.confidencehairsalon.nl/</loc></url>
+  <url><loc>https://www.confidencehairsalon.nl/spotlight.html</loc></url>
+  <url><loc>https://www.confidencehairsalon.nl/nieuws.html</loc></url>
+  <url><loc>https://www.confidencehairsalon.nl/voorwaarden.html</loc></url>
+  <url><loc>https://www.confidencehairsalon.nl/privacy.html</loc></url>
 </urlset>
