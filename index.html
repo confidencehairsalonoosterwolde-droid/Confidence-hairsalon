@@ -315,21 +315,14 @@
 (function(){
   const popup = document.getElementById('holidayPopup');
   const close = popup.querySelector('.holiday-close');
-  const key = 'confidence-december-2026-popup-seen';
-  let seen = false;
-  try { seen = sessionStorage.getItem(key) === '1'; } catch(e) {}
   function dismiss(){
     popup.classList.remove('is-open');
     popup.setAttribute('aria-hidden','true');
-    try { sessionStorage.setItem(key,'1'); } catch(e) {}
   }
-  if(!seen){
-    setTimeout(function(){
-      if(document.getElementById('barberModal').classList.contains('open')) return;
-      popup.classList.add('is-open');
-      popup.setAttribute('aria-hidden','false');
-    },1800);
-  }
+  setTimeout(function(){
+    popup.classList.add('is-open');
+    popup.setAttribute('aria-hidden','false');
+  },1800);
   close.addEventListener('click',dismiss);
   popup.addEventListener('click',function(e){if(e.target===popup)dismiss();});
   popup.querySelector('.btn').addEventListener('click',dismiss);
